@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Cards from '../Cards/Cards';
+import TimerContainer from '../Timer/Timer'
 import styles from './Board.scss';
 
 export default class Board extends Component {
@@ -30,29 +31,33 @@ export default class Board extends Component {
   }
 
 
-  componentDidUpdate() {
-    if (this.state.guesses.length === 2) {
-      this.isAMatch()
-    }
-  }
+  // componentDidUpdate() {
+  //   if (this.state.guesses.length === 2) {
+  //     this.isAMatch()
+  //   }
+  // }
+
 
   isAMatch() {
+    debugger;
     console.log('inside is a match function')
     const guessArr = this.state.guesses;
     const guessOne = guessArr[0];
     const guessTwo = guessArr[1];
     const itsAPerfectMatch = (guessOne.idx !== guessTwo.idx) && (guessOne.sym === guessTwo.sym)
 
+    // can put this before the logic, becase of setStates asynchronous nature to not update immediately
+    this.resetGuesses()
     if (itsAPerfectMatch) {
       this.setState({ matchedSymbols: this.state.matchedSymbols.add(guessOne.sym) })
+      return true
     } else {
-      // turn over all the cards and reset the guesses
-      //pass to Card matched or not matched prop = t/f 
+      return false
     }
-    this.resetGuesses()
   }
 
   handleGuess(guess) {
+    debugger;
     this.setState({ guesses: [...this.state.guesses, guess] }) //after user clicks guess becomes 1
   }
 
@@ -75,6 +80,8 @@ export default class Board extends Component {
                 symbol={symbol}
                 handleGuess={this.handleGuess}
                 showCard={this.state.matchedSymbols.has(symbol)}
+                isAMatch={this.isAMatch}
+                guesses={this.state.guesses}
               />
             </div>
         )

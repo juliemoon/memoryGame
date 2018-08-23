@@ -48,7 +48,7 @@ export default class Game extends Component {
     return (
       <div>
         <h1 className={styles.header}>NYT Games Code Test</h1>
-        <Timer />
+        {/* <Timer /> */}
         <div className={styles.placeholder}>
           {
             !this.state.difficulty ?
