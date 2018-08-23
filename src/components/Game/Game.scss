@@ -1,10 +1,17 @@
-$hey-look-at-me-im-a-sass-variable: #333;
+$hey-look-at-me-im-a-sass-variable:hotpink;
 
 .header {
   color: $hey-look-at-me-im-a-sass-variable;
   font-family: sans-serif;
 }
 
+.julie {
+  font-size: 90px;
+}
 .placeholder {
-  font-style: italic;
+  // font-style: italic;
+  // background-color: mistyrose;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-gap: 10px;
 }
