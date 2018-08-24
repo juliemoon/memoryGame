@@ -14,7 +14,7 @@ export const formatTime = time => {
   return `${m}:${ss}`
 }
 
-const Timer = ({ time = 0 }) => <div className={styles.timer}>{formatTime(time)}</div>
+const Timer = ({ time = 0 }) => <div className={styles.timer}>Timer: {formatTime(time)}</div>
 
 Timer.propTypes = {
   time: PropTypes.number,
@@ -30,6 +30,12 @@ class TimerContainer extends React.Component {
 
   componentDidMount() {
     this.interval = setInterval(this.tick.bind(this), 1000)
+  }
+
+  componentDidUpdate(prevProps){
+    if(this.props.playableDeck/2 === this.props.matchedSymbols) {
+      clearInterval(this.interval)
+    }
   }
 
   componentWillUnmount() {

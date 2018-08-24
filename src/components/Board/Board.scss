@@ -1,7 +1,20 @@
+
 .board {
-  border: 1px solid blue;
-  width: 240px;
-  height: 240px;
+  display: grid;
+  width: 140px;
+  height: 140px;
   perspective: 600px;
+}
+
+.match {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 1em;
+  place-self: center;
+}
+
+.gap {
+  display: grid;
+  grid-gap: 10px;
+  grid-template-columns: repeat(4, 1fr);
 }
 
