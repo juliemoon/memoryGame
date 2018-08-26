@@ -16,7 +16,7 @@ export default class Game extends Component {
   }
 
   componentDidMount() {
-    fetch('https://web-code-test-dot-nyt-games-prd.appspot.com/cards.json')
+    fetch('https://cors-anywhere.herokuapp.com/https://web-code-test-dot-nyt-games-prd.appspot.com/cards.json')
       .then(resp => resp.json())
       .then(data => {
         this.setState({ cards: data.levels })
